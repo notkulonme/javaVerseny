@@ -22,7 +22,7 @@ public class Main
             File forgalom = new File("forgalom.txt");
             Scanner myReader = new Scanner(forgalom);
             while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
+                String data = myReader.nextLine()+"\t";
                 Lista.add(data);
             }
             myReader.close();
@@ -40,28 +40,24 @@ public class Main
         String adat = "";
         ArrayList<String> adatok = new ArrayList<String>();
 
-        for (int a =0; a<=Forgalom.size()-1;a++)
-        {
-            for (int i = 0; i <= Forgalom.get(a).length() - 1; i++)
-            {
-                if (Forgalom.get(a).charAt(i) != space)
-                {
-                    adat+=Forgalom.get(a).charAt(i);
-                }
-                else
-                {
+        for (int a =0; a<=Forgalom.size()-1;a++) {
+            for (int i = 0; i <= Forgalom.get(a).length() - 1; i++) {
+                if (Forgalom.get(a).charAt(i) != space) {
+                    adat += Forgalom.get(a).charAt(i);
+                } else {
                     adatok.add(adat);
                     adat = "";
                 }
             }
-            System.out.println(adatok);
-            /*kocsi.rendszam=adatok.get(0);
+            //System.out.println( adatok.size());
+            kocsi.rendszam = adatok.get(0);
             kocsi.FH=Integer.parseInt(adatok.get(1));
             kocsi.FM=Integer.parseInt(adatok.get(2));
             kocsi.SH=Integer.parseInt(adatok.get(3));
             kocsi.SM=Integer.parseInt(adatok.get(4));
             kocsi.utszakasz=Integer.parseInt(adatok.get(5));
-            carList.add(kocsi);*/
+            carList.add(kocsi);
+            adatok.removeAll(adatok);
         }
         return  carList;
     }
