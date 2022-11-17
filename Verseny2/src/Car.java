@@ -4,6 +4,7 @@ public class Car {
     int FM;
     int SH;
     int SM;
+    int utszakasz;
     public Car()
     {
         rendszam = " ";
@@ -11,5 +12,6 @@ public class Car {
         FM = 0;
         SH = 0;
         SM = 0;
+        utszakasz = 0;
     }
 }

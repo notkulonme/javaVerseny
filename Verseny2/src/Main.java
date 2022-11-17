@@ -37,12 +37,8 @@ public class Main
         Car kocsi = new Car();
         ArrayList<Car> carList = new ArrayList<Car>();
         String alma = Forgalom.get(0);
-        int kor = 1;
-        String rendszam = " ";
-        int FH;
-        int FM;
-        int SH;
-        int SM;
+        String adat = "";
+        ArrayList<String> adatok = new ArrayList<String>();
 
         for (int a =0; a<=Forgalom.size()-1;a++)
         {
@@ -50,9 +46,22 @@ public class Main
             {
                 if (Forgalom.get(a).charAt(i) != space)
                 {
-                    System.out.println(alma.charAt(i));
+                    adat+=Forgalom.get(a).charAt(i);
+                }
+                else
+                {
+                    adatok.add(adat);
+                    adat = "";
                 }
             }
+            System.out.println(adatok);
+            /*kocsi.rendszam=adatok.get(0);
+            kocsi.FH=Integer.parseInt(adatok.get(1));
+            kocsi.FM=Integer.parseInt(adatok.get(2));
+            kocsi.SH=Integer.parseInt(adatok.get(3));
+            kocsi.SM=Integer.parseInt(adatok.get(4));
+            kocsi.utszakasz=Integer.parseInt(adatok.get(5));
+            carList.add(kocsi);*/
         }
         return  carList;
     }
