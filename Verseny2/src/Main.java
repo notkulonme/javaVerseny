@@ -13,6 +13,7 @@ public class Main
         System.out.println(Forgalom);
         Character space = Forgalom.get(0).charAt(7);
         carList = toCarList(Forgalom,space);
+        taskA(carList);
     }
 
     public static ArrayList<String> readFromFile()
@@ -40,7 +41,8 @@ public class Main
         String adat = "";
         ArrayList<String> adatok = new ArrayList<String>();
 
-        for (int a =0; a<=Forgalom.size()-1;a++) {
+        for (int a =0; a<=Forgalom.size()-1;a++)
+        {
             for (int i = 0; i <= Forgalom.get(a).length() - 1; i++) {
                 if (Forgalom.get(a).charAt(i) != space) {
                     adat += Forgalom.get(a).charAt(i);
@@ -60,5 +62,20 @@ public class Main
             adatok.removeAll(adatok);
         }
         return  carList;
+        }
+        public static void taskA(ArrayList<Car> carList)
+        {
+            Car kocsi = new Car();
+            int autokDelben = 0;
+            for (int i = 0;i <= carList.size()-1;i++)
+            {
+                kocsi = carList.get(i);
+                System.out.println(kocsi.FH);
+                if(kocsi.FH < 12 && kocsi.SH > 12)
+                {
+                    autokDelben++;
+                }
+            }
+            System.out.println("egyes feladat megoldása: " + autokDelben);
+        }
     }
-}
