@@ -8,12 +8,13 @@ public class Main
     public static void main(String[] args) {
         ArrayList<String> Forgalom = new ArrayList<String>();
         ArrayList<Car> carList = new ArrayList<Car>();
-
         Forgalom = readFromFile();
-        System.out.println(Forgalom);
+        //System.out.println(Forgalom);
         Character space = Forgalom.get(0).charAt(7);
         carList = toCarList(Forgalom,space);
         taskA(carList);
+        taskB(carList);
+        taskC(carList);
     }
 
     public static ArrayList<String> readFromFile()
@@ -35,7 +36,7 @@ public class Main
     }
     public static ArrayList<Car> toCarList(ArrayList<String> Forgalom, Character space)
     {
-        Car kocsi = new Car();
+
         ArrayList<Car> carList = new ArrayList<Car>();
         String alma = Forgalom.get(0);
         String adat = "";
@@ -48,16 +49,11 @@ public class Main
                     adat += Forgalom.get(a).charAt(i);
                 } else {
                     adatok.add(adat);
-                    adat = "";
+                    adat    = "";
                 }
             }
             //System.out.println( adatok.size());
-            kocsi.rendszam = adatok.get(0);
-            kocsi.FH=Integer.parseInt(adatok.get(1));
-            kocsi.FM=Integer.parseInt(adatok.get(2));
-            kocsi.SH=Integer.parseInt(adatok.get(3));
-            kocsi.SM=Integer.parseInt(adatok.get(4));
-            kocsi.utszakasz=Integer.parseInt(adatok.get(5));
+            Car kocsi=new Car(adatok.get(0),Integer.parseInt(adatok.get(1)),Integer.parseInt(adatok.get(2)),Integer.parseInt(adatok.get(3)),Integer.parseInt(adatok.get(4)),Integer.parseInt(adatok.get(5)));
             carList.add(kocsi);
             adatok.removeAll(adatok);
         }
@@ -65,17 +61,45 @@ public class Main
         }
         public static void taskA(ArrayList<Car> carList)
         {
-            Car kocsi = new Car();
+            Car kocsi;
             int autokDelben = 0;
             for (int i = 0;i <= carList.size()-1;i++)
             {
                 kocsi = carList.get(i);
-                System.out.println(kocsi.FH);
-                if(kocsi.FH < 12 && kocsi.SH > 12)
+                //System.out.println(kocsi.time);
+                if(kocsi.time <= 720 && kocsi.time2 > 720)
                 {
                     autokDelben++;
                 }
             }
-            System.out.println("egyes feladat megoldása: " + autokDelben);
+            System.out.println("A feladat megoldása: " + autokDelben);
+        }
+
+        public static void taskB(ArrayList<Car> carList)
+        {
+            int avSpeed100plus = 0;
+            Car kocsi;
+            for(int i = 0; i<=carList.size()-1;i++)
+            {
+                kocsi=carList.get(i);
+                //System.out.println(carList.get(i).time+" "+ carList.get(i).time2+" "+carList.get(i).avSpeed);
+                if(kocsi.avSpeed>=100)
+                {
+                    avSpeed100plus++;
+                }
+            }
+            //System.out.println(carList.size());
+            System.out.println("B feladat megoldása: "+ avSpeed100plus);
+        }
+        public static void taskC(ArrayList<Car> carList)
+        {
+            Car kocsi;
+            for(int a = 0;a<=carList.size()-1;a++)
+            {
+                for(int i = a + 1;i<=carList.size()-1-a;i++)
+                {
+                    
+                }
+            }
         }
     }
