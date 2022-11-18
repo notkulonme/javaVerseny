@@ -94,12 +94,27 @@ public class Main
         public static void taskC(ArrayList<Car> carList)
         {
             Car kocsi;
+            Car kocsi2;
+            int estek = 0;
             for(int a = 0;a<=carList.size()-1;a++)
             {
+                kocsi=carList.get(a);
                 for(int i = a + 1;i<=carList.size()-1-a;i++)
                 {
-                    
+                    kocsi2=carList.get(i);
+                    if(kocsi.rendszam.equals(kocsi2.rendszam) && kocsi.utszakasz== kocsi2.utszakasz)
+                    {
+                        if (kocsi.time >= kocsi2.time && kocsi.time2 >= kocsi2.time2 || kocsi.time2 <= kocsi2.time2)
+                        {
+                            estek++;
+                        }
+                        else if (kocsi.time <= kocsi2.time && kocsi.time2 >= kocsi2.time2 || kocsi.time2 <= kocsi2.time2)
+                        {
+                            estek++;
+                        }
+                    }
                 }
             }
+            System.out.println("C feladat megoldása: " + estek);
         }
     }
