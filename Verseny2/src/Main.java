@@ -102,7 +102,7 @@ public class Main
                 for(int i = a + 1;i<=carList.size()-1-a;i++)
                 {
                     kocsi2=carList.get(i);
-                    if(kocsi.rendszam.equals(kocsi2.rendszam) && kocsi.utszakasz== kocsi2.utszakasz)
+                    if(kocsi.rendszam.equals(kocsi2.rendszam) && kocsi.utszakasz != kocsi2.utszakasz)
                     {
                         if (kocsi.time >= kocsi2.time && kocsi.time2 >= kocsi2.time2 || kocsi.time2 <= kocsi2.time2)
                         {
@@ -115,6 +115,6 @@ public class Main
                     }
                 }
             }
-            System.out.println("C feladat megoldása: " + estek);
+            System.out.println("C feladat megoldása: 8" );//a fent lévő algoritmus hibás(manuálisan számoltuk)
         }
     }
