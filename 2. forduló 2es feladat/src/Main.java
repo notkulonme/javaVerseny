@@ -55,7 +55,7 @@ public class Main {
 
     public static void taskA(MultiArray list)
     {
-        var megoldas = 0;
+        int megoldas = 0;
         for(int a = 0; a!= list.size();a++)
         {
             ArrayList<Integer> sor = list.getArray(a);
