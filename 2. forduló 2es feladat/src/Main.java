@@ -1,10 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         MultiArray list = readFromFile();
         taskA(list);
         taskB(list);
@@ -95,16 +97,16 @@ public class Main {
         }
         System.out.println("A B feladat megoldása: "+ jó);
     }
-    public static void taskC(MultiArray list)
-    {
+    public static void taskC(MultiArray list) throws IOException {
         ArrayList<Integer> eredmenyek = new ArrayList<>();
+        FileWriter myWriter = new FileWriter("megoldas.txt");
         for(int i = 0;i!= list.size();i++)
         {
             ArrayList<Integer> sor = list.getArray(i);
             int jó = 0;
-            for(int a = 0; a<9; a++)
+            for(int a = 0; a<sor.size()-1; a++)
             {
-                System.out.println(a);
+                //System.out.println(a);
                 int sz1 = sor.get(a);
                 int sz2 = sor.get(a+1);
                 String sz1á = String.valueOf(sz1);
@@ -119,9 +121,35 @@ public class Main {
                 else if(u1-2==u2&&(e1-1==e2||e1+1==e2)) jó++;
                 else if(u1+2==u2&&(e1-1==e2||e1+1==e2)) jó++;
             }
-            if(jó==9){eredmenyek.add(1);}
-            if(jó!=9){eredmenyek.add(0);}
-            //System.out.println();
+            System.out.println(jó);
+            if(jó==35)
+            {
+                eredmenyek.add(1);
+                try
+                {
+                    myWriter.write("1\n");
+                }
+                catch (IOException e)
+                {
+                    System.out.println("Fájlba írási hiba");
+                }
+            }
+            else if(jó!=35)
+            {
+                eredmenyek.add(0);
+                try
+                {
+                    myWriter.write("0\n");
+                }
+                catch (IOException e)
+                {
+                    System.out.println("Fájlba írási hiba");
+                }
+            }
+
+            //System.out.println(eredmenyek+" \n"+eredmenyek.size());
         }
+        myWriter.close();
+        System.out.println("A c feladat megoldása a megoldas.txt-ben található");
     }
 }
