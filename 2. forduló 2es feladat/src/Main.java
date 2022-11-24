@@ -8,6 +8,7 @@ public class Main {
         MultiArray list = readFromFile();
         taskA(list);
         taskB(list);
+        taskC(list);
     }
 
     public static MultiArray readFromFile()
@@ -93,5 +94,34 @@ public class Main {
             else if(u1+2==u2&&(e1-1==e2||e1+1==e2)) jó++;
         }
         System.out.println("A B feladat megoldása: "+ jó);
+    }
+    public static void taskC(MultiArray list)
+    {
+        ArrayList<Integer> eredmenyek = new ArrayList<>();
+        for(int i = 0;i!= list.size();i++)
+        {
+            ArrayList<Integer> sor = list.getArray(i);
+            int jó = 0;
+            for(int a = 0; a<9; a++)
+            {
+                System.out.println(a);
+                int sz1 = sor.get(a);
+                int sz2 = sor.get(a+1);
+                String sz1á = String.valueOf(sz1);
+                String sz2á = String.valueOf(sz2);
+                int e1 = Integer.parseInt(sz1á.substring(0,1));
+                int e2 = Integer.parseInt(sz2á.substring(0,1));
+                int u1 = Integer.parseInt(sz1á.substring(1,2));
+                int u2 = Integer.parseInt(sz2á.substring(1,2));
+
+                if(e1+2==e2&&(u1-1==u2||u1+1==u2)) jó++;
+                else if(e1-2==e2&&(u1-1==u2||u1+1==u2)) jó++;
+                else if(u1-2==u2&&(e1-1==e2||e1+1==e2)) jó++;
+                else if(u1+2==u2&&(e1-1==e2||e1+1==e2)) jó++;
+            }
+            if(jó==9){eredmenyek.add(1);}
+            if(jó!=9){eredmenyek.add(0);}
+            //System.out.println();
+        }
     }
 }
