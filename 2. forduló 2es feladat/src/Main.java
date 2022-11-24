@@ -121,7 +121,7 @@ public class Main {
                 else if(u1-2==u2&&(e1-1==e2||e1+1==e2)) jó++;
                 else if(u1+2==u2&&(e1-1==e2||e1+1==e2)) jó++;
             }
-            System.out.println(jó);
+            //System.out.println(jó);
             if(jó==35)
             {
                 eredmenyek.add(1);
