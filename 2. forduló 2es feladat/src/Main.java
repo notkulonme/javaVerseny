@@ -56,6 +56,8 @@ public class Main {
         return beolvasott;
     }
 
+
+
     public static void taskA(MultiArray list)
     {
         int megoldas = 0;
@@ -75,28 +77,28 @@ public class Main {
         System.out.println("Az A feladata megoldása: "+megoldas);
     }
 
+
+
+
+
     public static void taskB(MultiArray list)
     {
         int jó = 0;
         for(int i = 0; i<= list.length();i++)
         {
             ArrayList<Integer> sor = list.getArray(i);
-            int sz1 = sor.get(0);
-            int sz2 = sor.get(sor.size()-1);
-            String sz1á = String.valueOf(sz1);
-            String sz2á = String.valueOf(sz2);
-            int e1 = Integer.parseInt(sz1á.substring(0,1));
-            int e2 = Integer.parseInt(sz2á.substring(0,1));
-            int u1 = Integer.parseInt(sz1á.substring(1,2));
-            int u2 = Integer.parseInt(sz2á.substring(1,2));
 
-            if(e1+2==e2&&(u1-1==u2||u1+1==u2)) jó++;
-            else if(e1-2==e2&&(u1-1==u2||u1+1==u2)) jó++;
-            else if(u1-2==u2&&(e1-1==e2||e1+1==e2)) jó++;
-            else if(u1+2==u2&&(e1-1==e2||e1+1==e2)) jó++;
+            if(isGood(sor.get(0), sor.get(sor.size()-1)))
+            {
+                jó++;
+            }
         }
         System.out.println("A B feladat megoldása: "+ jó);
     }
+
+
+
+
     public static void taskC(MultiArray list) throws IOException {
         ArrayList<Integer> eredmenyek = new ArrayList<>();
         FileWriter myWriter = new FileWriter("megoldas.txt");
@@ -106,20 +108,11 @@ public class Main {
             int jó = 0;
             for(int a = 0; a<sor.size()-1; a++)
             {
-                //System.out.println(a);
-                int sz1 = sor.get(a);
-                int sz2 = sor.get(a+1);
-                String sz1á = String.valueOf(sz1);
-                String sz2á = String.valueOf(sz2);
-                int e1 = Integer.parseInt(sz1á.substring(0,1));
-                int e2 = Integer.parseInt(sz2á.substring(0,1));
-                int u1 = Integer.parseInt(sz1á.substring(1,2));
-                int u2 = Integer.parseInt(sz2á.substring(1,2));
 
-                if(e1+2==e2&&(u1-1==u2||u1+1==u2)) jó++;
-                else if(e1-2==e2&&(u1-1==u2||u1+1==u2)) jó++;
-                else if(u1-2==u2&&(e1-1==e2||e1+1==e2)) jó++;
-                else if(u1+2==u2&&(e1-1==e2||e1+1==e2)) jó++;
+                if(isGood(sor.get(a), sor.get(a+1)))
+                {
+                    jó++;
+                }
             }
             //System.out.println(jó);
             if(jó==35)
@@ -151,5 +144,26 @@ public class Main {
         }
         myWriter.close();
         System.out.println("A c feladat megoldása a megoldas.txt-ben található");
+    }
+
+
+
+
+
+    public static boolean isGood(int sz1, int sz2)
+    {
+        String sz1á = String.valueOf(sz1);
+        String sz2á = String.valueOf(sz2);
+        int e1 = Integer.parseInt(sz1á.substring(0,1));
+        int e2 = Integer.parseInt(sz2á.substring(0,1));
+        int u1 = Integer.parseInt(sz1á.substring(1,2));
+        int u2 = Integer.parseInt(sz2á.substring(1,2));
+
+
+        if(e1+2==e2&&(u1-1==u2||u1+1==u2)) return true;
+        else if(e1-2==e2&&(u1-1==u2||u1+1==u2)) return true;
+        else if(u1-2==u2&&(e1-1==e2||e1+1==e2)) return true;
+        else if(u1+2==u2&&(e1-1==e2||e1+1==e2)) return true;
+        else return false;
     }
 }
