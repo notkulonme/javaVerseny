@@ -27,7 +27,9 @@ public class Ut
     {
         boolean validLepes = false;
 
-        if (csucs.equals("A")) {
+        if (csucs.equals("A"))
+        {
+            //csucsok.add("A");
             if (lepes == 1) {
                 validLepes = true;
                 csucsok.add("B");
@@ -49,21 +51,23 @@ public class Ut
 
         }
 
-        if (csucs.equals("B")) {
+        if (csucs.equals("B"))
+        {
+            //csucsok.add("B");
             if (lepes == 4) {
                 validLepes = true;
                 csucsok.add("A");
                 szelek.add("AB");
             }
-            if (lepes == 3) {
-                validLepes = true;
-                csucsok.add("F");
-                szelek.add("BF");
-            }
             if (lepes == 2) {
                 validLepes = true;
                 csucsok.add("C");
                 szelek.add("BC");
+            }
+            if (lepes == 3) {
+                validLepes = true;
+                csucsok.add("F");
+                szelek.add("BF");
             }
             if (validLepes == false) {
                 valid = false;
@@ -73,6 +77,7 @@ public class Ut
 
         if (csucs.equals("E"))
         {
+            //csucsok.add("E");
             if (lepes == 1) {
                 validLepes = true;
                 csucsok.add("F");
@@ -96,6 +101,7 @@ public class Ut
 
         if (csucs.equals("F"))
         {
+            //csucsok.add("F");
             if (lepes == 4) {
                 validLepes = true;
                 csucsok.add("E");
@@ -119,6 +125,7 @@ public class Ut
 
         if (csucs.equals("G"))
         {
+            //csucsok.add("G");
             if (lepes == 4) {
                 validLepes = true;
                 csucsok.add("H");
@@ -141,6 +148,7 @@ public class Ut
 
         if (csucs.equals("H"))
         {
+            //csucsok.add("H");
             if (lepes == 1) {
                 validLepes = true;
                 csucsok.add("G");
@@ -164,10 +172,12 @@ public class Ut
 
         if (csucs.equals("D"))
         {
+            //csucsok.add("D");
             if (lepes == 1) {
                 validLepes = true;
                 csucsok.add("C");
                 szelek.add("CD");
+
             }
             if (lepes == 5) {
                 validLepes = true;
@@ -186,6 +196,7 @@ public class Ut
 
         if (csucs.equals("C"))
         {
+            //csucsok.add("C");
             if (lepes == 4) {
                 validLepes = true;
                 csucsok.add("D");
@@ -209,19 +220,20 @@ public class Ut
 
     public int taskB()
     {
-        //System.out.println(csucsok.contains("A"));
         if (csucsok.contains("A")&&csucsok.contains("B")&&csucsok.contains("C")&&csucsok.contains("D")&&csucsok.contains("E")&&csucsok.contains("F")&&csucsok.contains("G")&&csucsok.contains("H"))
         {
             return 1;
         }
         else return 0;
     }
-
     public int taskC()
     {
         if(szelek.contains("AB")&&szelek.contains("AD")&&szelek.contains("AE")&&szelek.contains("BC")&&szelek.contains("BF")&&szelek.contains("EF")&&szelek.contains("EH")&&szelek.contains("FG")&&szelek.contains("GH")&&szelek.contains("DH")&&szelek.contains("CD")&&szelek.contains("CG"))
             return 1;
         else return  0;
     }
+
+
+
 
 }

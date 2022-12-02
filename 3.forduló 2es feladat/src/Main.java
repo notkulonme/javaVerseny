@@ -6,10 +6,31 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args)
     {
-        readFromFile();
+        ArrayList<Ut> list =  readFromFile();
+        System.out.println("Az a feladat megoldása: "+list.size());
+        taskB(list);
+        taskC(list);
     }
 
-    public static void readFromFile()
+    public static void taskB(ArrayList<Ut> list)
+    {
+        int megoldas = 0;
+        for(int i = 0; i < list.size();i++)
+        {
+            megoldas += list.get(i).taskB();
+        }
+        System.out.println("A b feladat megoldása: "+megoldas);
+    }
+    public static void taskC(ArrayList<Ut> list)
+    {
+        int megoldas = 0;
+        for(int i = 0; i < list.size();i++)
+        {
+            megoldas += list.get(i).taskC();
+        }
+        System.out.println("A c feladat megoldása: " + megoldas);
+    }
+    public static ArrayList<Ut> readFromFile()
     {
         ArrayList<Ut> utakLista = new ArrayList<>();
         ArrayList<Ut> validUtakLista = new ArrayList<>();
@@ -45,7 +66,8 @@ public class Main {
         }
 
         //System.out.println(validUtakLista.get(0).csucsok);
-        System.out.println(validUtakLista.size());
+        //System.out.println(validUtakLista.size());
+        return validUtakLista;
     }
 
     public static Ut procesReadedData(String sor)
@@ -56,7 +78,7 @@ public class Main {
         sor = sor.substring(2);
         //System.out.println(ut.Fcsucs);
         ut.AddCsucs(ut.Fcsucs);
-       //System.out.println(sor);
+        //System.out.println(sor);
 
         String adat = "";
         for (int i = 0;i < sor.length();i++)
@@ -87,6 +109,8 @@ public class Main {
             }
             else break;
         }
+        //System.out.println(ut.csucsok);
+        //System.out.println(ut.valid);
         return ut;
     }
 }
